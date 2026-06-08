@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home & Garden Information Center | Dashboard</title>
+  <title>Home & Garden Information Center | Invoca Script</title>
   <style>
     :root{
       --green:#0a8f5b;
@@ -14,9 +14,13 @@
       --bg:#f7faf8;
       --card:#ffffff;
       --shadow:0 8px 24px rgba(16,24,40,.06);
+      --label:#2f4d3f;
+      --pill:#0a8f5b;
+      --warn:#b7791f;
+      --bad:#b42318;
     }
 
-    *{ box-sizing:border-box; }
+    * { box-sizing: border-box; }
 
     body{
       margin:0;
@@ -44,20 +48,18 @@
       background:var(--card);
       border-top:1px solid var(--border);
       box-shadow:var(--shadow);
-      margin:0;
     }
 
     .content{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:0;
     }
 
     .section{
       padding:14px 14px 10px;
       border-right:1px solid var(--border);
       border-bottom:1px solid var(--border);
-      min-height:220px;
+      min-height:210px;
     }
 
     .section:nth-child(2n){
@@ -90,14 +92,12 @@
     }
 
     .label{
-      color:#2f4d3f;
-      font-weight:400;
+      color:var(--label);
       white-space:nowrap;
     }
 
     .value{
       color:#1f2937;
-      font-weight:400;
       word-break:break-word;
     }
 
@@ -112,11 +112,11 @@
       font-size:12px;
       font-weight:700;
       color:#fff;
-      background:var(--green);
+      background:var(--pill);
     }
 
-    .pill.warn{ background:#b7791f; }
-    .pill.bad{ background:#b42318; }
+    .pill.warn{ background:var(--warn); }
+    .pill.bad{ background:var(--bad); }
 
     .full{
       grid-column:1 / -1;
@@ -172,121 +172,54 @@
         <section class="section">
           <h2 class="section-title">Customer Context</h2>
           <div class="rows">
-            <div class="row">
-              <div class="label">Customer Name:</div>
-              <div class="value" id="studentName">Ava Johnson</div>
-            </div>
-            <div class="row">
-              <div class="label">Student ID:</div>
-              <div class="value" id="studentId">S-100245</div>
-            </div>
-            <div class="row">
-              <div class="label">Program:</div>
-              <div class="value" id="program">Gardening Program</div>
-            </div>
-            <div class="row">
-              <div class="label">Enrollment Status:</div>
-              <div class="value" id="enrollmentStatus"><span class="pill">Active</span></div>
-            </div>
-            <div class="row">
-              <div class="label">Outstanding Balance:</div>
-              <div class="value" id="outstandingBalance">$1,250.00</div>
-            </div>
-            <div class="row">
-              <div class="label">Financial Aid Status:</div>
-              <div class="value" id="financialAidStatus">Available</div>
-            </div>
+            <div class="row"><div class="label">Customer Name:</div><div class="value" id="customerName">Ava Johnson</div></div>
+            <div class="row"><div class="label">Customer Type:</div><div class="value" id="customerType">Homeowner</div></div>
+            <div class="row"><div class="label">Service Request:</div><div class="value" id="serviceRequest">Plant care and lawn advice</div></div>
+            <div class="row"><div class="label">Shopping Cart Value:</div><div class="value" id="shoppingCartValue">$0.00</div></div>
+            <div class="row"><div class="label">Products:</div><div class="value" id="products">Soil, mulch, fertilizer</div></div>
+            <div class="row"><div class="label">Other Party Number:</div><div class="value" id="otherPartyNumber">(864) 555-0142</div></div>
+            <div class="row"><div class="label">Serviceable Address:</div><div class="value" id="serviceableAddress">Yes</div></div>
+            <div class="row"><div class="label">Shopping Cart ID:</div><div class="value" id="shoppingCartId">HG-8302-HZ</div></div>
           </div>
         </section>
 
         <section class="section">
           <h2 class="section-title">Contact Information</h2>
           <div class="rows">
-            <div class="row">
-              <div class="label">Primary Phone:</div>
-              <div class="value" id="primaryPhone">(864) 555-0142</div>
-            </div>
-            <div class="row">
-              <div class="label">First Name:</div>
-              <div class="value" id="firstName">Ava</div>
-            </div>
-            <div class="row">
-              <div class="label">Last Name:</div>
-              <div class="value" id="lastName">Johnson</div>
-            </div>
-            <div class="row">
-              <div class="label">Street:</div>
-              <div class="value" id="street">123 Greenway Dr.</div>
-            </div>
-            <div class="row">
-              <div class="label">City:</div>
-              <div class="value" id="city">Clemson</div>
-            </div>
-            <div class="row">
-              <div class="label">Zip:</div>
-              <div class="value" id="zip">29631</div>
-            </div>
-            <div class="row">
-              <div class="label">Email:</div>
-              <div class="value" id="email">ava.johnson@example.edu</div>
-            </div>
+            <div class="row"><div class="label">Primary Phone:</div><div class="value" id="primaryPhone">8645550142</div></div>
+            <div class="row"><div class="label">First Name:</div><div class="value" id="firstName">Ava</div></div>
+            <div class="row"><div class="label">Last Name:</div><div class="value" id="lastName">Johnson</div></div>
+            <div class="row"><div class="label">Street:</div><div class="value" id="street">123 Greenway Dr.</div></div>
+            <div class="row"><div class="label">City:</div><div class="value" id="city">Clemson</div></div>
+            <div class="row"><div class="label">Zip:</div><div class="value" id="zip">29631</div></div>
+            <div class="row"><div class="label">Email:</div><div class="value" id="email">ava.johnson@example.edu</div></div>
           </div>
         </section>
 
         <section class="section">
           <h2 class="section-title">Digital Journey</h2>
           <div class="rows">
-            <div class="row">
-              <div class="label">PreCall Journey:</div>
-              <div class="value" id="preCallJourney">/home &gt; /garden &gt; /services &gt; /contact-center</div>
-            </div>
-            <div class="row">
-              <div class="label">Current Page:</div>
-              <div class="value" id="currentPage">/student-dashboard</div>
-            </div>
-            <div class="row">
-              <div class="label">Recent Action:</div>
-              <div class="value" id="recentAction">Viewed payment options</div>
-            </div>
-            <div class="row">
-              <div class="label">Journey Status:</div>
-              <div class="value" id="journeyStatus"><span class="pill">In Progress</span></div>
-            </div>
-            <div class="row">
-              <div class="label">Last Payment Date:</div>
-              <div class="value" id="lastPaymentDate">2026-04-18</div>
-            </div>
+            <div class="row"><div class="label">Pre-Call Journey:</div><div class="value" id="preCallJourney">/home &gt; /garden &gt; /support &gt; /contact-center</div></div>
+            <div class="row"><div class="label">Current Page:</div><div class="value" id="currentPage">/service-dashboard</div></div>
+            <div class="row"><div class="label">Recent Action:</div><div class="value" id="recentAction">Viewed plant care tips</div></div>
+            <div class="row"><div class="label">Journey Status:</div><div class="value" id="journeyStatus"><span class="pill">In Progress</span></div></div>
+            <div class="row"><div class="label">Last Payment Date:</div><div class="value" id="lastPaymentDate">2026-04-18</div></div>
           </div>
         </section>
 
         <section class="section">
           <h2 class="section-title">System Data</h2>
           <div class="rows">
-            <div class="row">
-              <div class="label">Call Record ID:</div>
-              <div class="value" id="callRecordId">CR-100245-01</div>
-            </div>
-            <div class="row">
-              <div class="label">Agent ID:</div>
-              <div class="value" id="agentId">147</div>
-            </div>
-            <div class="row">
-              <div class="label">Queue:</div>
-              <div class="value" id="queueName">Home & Garden Support</div>
-            </div>
-            <div class="row">
-              <div class="label">Interaction Type:</div>
-              <div class="value" id="interactionType">Screen Pop</div>
-            </div>
-            <div class="row">
-              <div class="label">Risk / Priority:</div>
-              <div class="value" id="riskLevel"><span class="pill warn">Medium</span></div>
-            </div>
+            <div class="row"><div class="label">Call Record ID:</div><div class="value" id="callRecordId">HG-CR-100245-01</div></div>
+            <div class="row"><div class="label">Agent ID:</div><div class="value" id="agentId">147</div></div>
+            <div class="row"><div class="label">Queue:</div><div class="value" id="queueName">Home & Garden Support</div></div>
+            <div class="row"><div class="label">Interaction Type:</div><div class="value" id="interactionType">Screen Pop</div></div>
+            <div class="row"><div class="label">Risk / Priority:</div><div class="value" id="riskLevel"><span class="pill warn">Medium</span></div></div>
           </div>
         </section>
 
         <section class="section full">
-          <h2 class="section-title">Campus / Location</h2>
+          <h2 class="section-title">Location</h2>
           <div class="map-box">
             <iframe id="campusMap" title="Location map" loading="lazy"></iframe>
           </div>
@@ -294,7 +227,7 @@
       </div>
 
       <div class="footer-note">
-        This page is driven entirely by URL query parameters. Missing values fall back to placeholders.
+        This page reads all values from URL query parameters and falls back to placeholders when a parameter is missing.
       </div>
     </div>
   </div>
@@ -302,25 +235,27 @@
   <script>
     const defaults = {
       orgName: "Home & Garden Information Center",
-      studentName: "Ava Johnson",
-      studentId: "S-100245",
-      program: "Gardening Program",
-      enrollmentStatus: "Active",
-      outstandingBalance: "$1,250.00",
-      financialAidStatus: "Available",
-      primaryPhone: "(864) 555-0142",
+      customerName: "Ava Johnson",
+      customerType: "Homeowner",
+      serviceRequest: "Plant care and lawn advice",
+      shoppingCartValue: "$0.00",
+      products: "Soil, mulch, fertilizer",
+      otherPartyNumber: "(864) 555-0142",
+      serviceableAddress: "Yes",
+      shoppingCartId: "HG-8302-HZ",
+      primaryPhone: "8645550142",
       firstName: "Ava",
       lastName: "Johnson",
       street: "123 Greenway Dr.",
       city: "Clemson",
       zip: "29631",
       email: "ava.johnson@example.edu",
-      preCallJourney: "/home > /garden > /services > /contact-center",
-      currentPage: "/student-dashboard",
-      recentAction: "Viewed payment options",
+      preCallJourney: "/home > /garden > /support > /contact-center",
+      currentPage: "/service-dashboard",
+      recentAction: "Viewed plant care tips",
       journeyStatus: "In Progress",
       lastPaymentDate: "2026-04-18",
-      callRecordId: "CR-100245-01",
+      callRecordId: "HG-CR-100245-01",
       agentId: "147",
       queueName: "Home & Garden Support",
       interactionType: "Screen Pop",
@@ -343,11 +278,14 @@
     };
 
     setText("orgName", data.orgName);
-    setText("studentName", data.studentName);
-    setText("studentId", data.studentId);
-    setText("program", data.program);
-    setText("outstandingBalance", data.outstandingBalance);
-    setText("financialAidStatus", data.financialAidStatus);
+    setText("customerName", data.customerName);
+    setText("customerType", data.customerType);
+    setText("serviceRequest", data.serviceRequest);
+    setText("shoppingCartValue", data.shoppingCartValue);
+    setText("products", data.products);
+    setText("otherPartyNumber", data.otherPartyNumber);
+    setText("serviceableAddress", data.serviceableAddress);
+    setText("shoppingCartId", data.shoppingCartId);
     setText("primaryPhone", data.primaryPhone);
     setText("firstName", data.firstName);
     setText("lastName", data.lastName);
@@ -364,22 +302,21 @@
     setText("queueName", data.queueName);
     setText("interactionType", data.interactionType);
 
-    function badgeText(value, kind){
-      return `<span class="pill ${kind || ""}">${value}</span>`;
-    }
+    document.getElementById("journeyStatus").innerHTML =
+      `<span class="pill">${data.journeyStatus}</span>`;
 
-    document.getElementById("enrollmentStatus").innerHTML = badgeText(data.enrollmentStatus, "");
-    document.getElementById("journeyStatus").innerHTML = badgeText(data.journeyStatus, "");
+    const risk = String(data.riskLevel).toLowerCase();
     document.getElementById("riskLevel").innerHTML =
-      data.riskLevel.toLowerCase() === "high"
-        ? badgeText(data.riskLevel, "bad")
-        : data.riskLevel.toLowerCase() === "medium"
-          ? badgeText(data.riskLevel, "warn")
-          : badgeText(data.riskLevel, "");
+      risk === "high"
+        ? `<span class="pill bad">${data.riskLevel}</span>`
+        : risk === "medium"
+          ? `<span class="pill warn">${data.riskLevel}</span>`
+          : `<span class="pill">${data.riskLevel}</span>`;
 
     const lat = Number(data.campusLat);
     const lng = Number(data.campusLng);
     const map = document.getElementById("campusMap");
+
     if (Number.isFinite(lat) && Number.isFinite(lng)) {
       const delta = 0.02;
       const left = lng - delta;
@@ -392,7 +329,7 @@
       map.style.display = "none";
     }
 
-    document.title = `${data.studentName} | Home & Garden Information Center`;
+    document.title = `${data.customerName} | Home & Garden Information Center`;
   </script>
 </body>
 </html>
