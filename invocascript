@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home & Garden Information Center | Dashboard</title>
+  <style>
+    :root{
+      --green:#0a8f5b;
+      --green-dark:#08724a;
+      --border:#d8e6de;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --bg:#f7faf8;
+      --card:#ffffff;
+      --shadow:0 8px 24px rgba(16,24,40,.06);
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    .topbar{
+      background:var(--green);
+      color:#fff;
+      padding:10px 14px;
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .wrap{
+      max-width:1400px;
+      margin:0 auto;
+      padding:0;
+    }
+
+    .panel{
+      background:var(--card);
+      border-top:1px solid var(--border);
+      box-shadow:var(--shadow);
+      margin:0;
+    }
+
+    .content{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0;
+    }
+
+    .section{
+      padding:14px 14px 10px;
+      border-right:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      min-height:220px;
+    }
+
+    .section:nth-child(2n){
+      border-right:none;
+    }
+
+    .section-title{
+      margin:0 0 10px;
+      color:var(--green);
+      font-size:13px;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      font-weight:700;
+      border-bottom:1px solid var(--border);
+      padding-bottom:6px;
+    }
+
+    .rows{
+      display:grid;
+      gap:6px;
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns:220px 1fr;
+      gap:16px;
+      align-items:start;
+      font-size:13px;
+      line-height:1.35;
+    }
+
+    .label{
+      color:#2f4d3f;
+      font-weight:400;
+      white-space:nowrap;
+    }
+
+    .value{
+      color:#1f2937;
+      font-weight:400;
+      word-break:break-word;
+    }
+
+    .value strong{
+      font-weight:700;
+    }
+
+    .pill{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      color:#fff;
+      background:var(--green);
+    }
+
+    .pill.warn{ background:#b7791f; }
+    .pill.bad{ background:#b42318; }
+
+    .full{
+      grid-column:1 / -1;
+    }
+
+    .map-box{
+      height:180px;
+      border:1px solid var(--border);
+      border-radius:6px;
+      overflow:hidden;
+      background:#eef3ef;
+    }
+
+    .map-box iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
+
+    .footer-note{
+      font-size:12px;
+      color:var(--muted);
+      padding:10px 14px 14px;
+      border-top:1px solid var(--border);
+      background:#fcfdfc;
+    }
+
+    @media (max-width: 900px){
+      .content{
+        grid-template-columns:1fr;
+      }
+      .section{
+        border-right:none;
+      }
+      .row{
+        grid-template-columns:1fr;
+        gap:3px;
+      }
+      .label{
+        white-space:normal;
+        font-weight:700;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar" id="orgName">Home & Garden Information Center</div>
+
+    <div class="panel">
+      <div class="content">
+        <section class="section">
+          <h2 class="section-title">Customer Context</h2>
+          <div class="rows">
+            <div class="row">
+              <div class="label">Customer Name:</div>
+              <div class="value" id="studentName">Ava Johnson</div>
+            </div>
+            <div class="row">
+              <div class="label">Student ID:</div>
+              <div class="value" id="studentId">S-100245</div>
+            </div>
+            <div class="row">
+              <div class="label">Program:</div>
+              <div class="value" id="program">Gardening Program</div>
+            </div>
+            <div class="row">
+              <div class="label">Enrollment Status:</div>
+              <div class="value" id="enrollmentStatus"><span class="pill">Active</span></div>
+            </div>
+            <div class="row">
+              <div class="label">Outstanding Balance:</div>
+              <div class="value" id="outstandingBalance">$1,250.00</div>
+            </div>
+            <div class="row">
+              <div class="label">Financial Aid Status:</div>
+              <div class="value" id="financialAidStatus">Available</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Contact Information</h2>
+          <div class="rows">
+            <div class="row">
+              <div class="label">Primary Phone:</div>
+              <div class="value" id="primaryPhone">(864) 555-0142</div>
+            </div>
+            <div class="row">
+              <div class="label">First Name:</div>
+              <div class="value" id="firstName">Ava</div>
+            </div>
+            <div class="row">
+              <div class="label">Last Name:</div>
+              <div class="value" id="lastName">Johnson</div>
+            </div>
+            <div class="row">
+              <div class="label">Street:</div>
+              <div class="value" id="street">123 Greenway Dr.</div>
+            </div>
+            <div class="row">
+              <div class="label">City:</div>
+              <div class="value" id="city">Clemson</div>
+            </div>
+            <div class="row">
+              <div class="label">Zip:</div>
+              <div class="value" id="zip">29631</div>
+            </div>
+            <div class="row">
+              <div class="label">Email:</div>
+              <div class="value" id="email">ava.johnson@example.edu</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Digital Journey</h2>
+          <div class="rows">
+            <div class="row">
+              <div class="label">PreCall Journey:</div>
+              <div class="value" id="preCallJourney">/home &gt; /garden &gt; /services &gt; /contact-center</div>
+            </div>
+            <div class="row">
+              <div class="label">Current Page:</div>
+              <div class="value" id="currentPage">/student-dashboard</div>
+            </div>
+            <div class="row">
+              <div class="label">Recent Action:</div>
+              <div class="value" id="recentAction">Viewed payment options</div>
+            </div>
+            <div class="row">
+              <div class="label">Journey Status:</div>
+              <div class="value" id="journeyStatus"><span class="pill">In Progress</span></div>
+            </div>
+            <div class="row">
+              <div class="label">Last Payment Date:</div>
+              <div class="value" id="lastPaymentDate">2026-04-18</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">System Data</h2>
+          <div class="rows">
+            <div class="row">
+              <div class="label">Call Record ID:</div>
+              <div class="value" id="callRecordId">CR-100245-01</div>
+            </div>
+            <div class="row">
+              <div class="label">Agent ID:</div>
+              <div class="value" id="agentId">147</div>
+            </div>
+            <div class="row">
+              <div class="label">Queue:</div>
+              <div class="value" id="queueName">Home & Garden Support</div>
+            </div>
+            <div class="row">
+              <div class="label">Interaction Type:</div>
+              <div class="value" id="interactionType">Screen Pop</div>
+            </div>
+            <div class="row">
+              <div class="label">Risk / Priority:</div>
+              <div class="value" id="riskLevel"><span class="pill warn">Medium</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section full">
+          <h2 class="section-title">Campus / Location</h2>
+          <div class="map-box">
+            <iframe id="campusMap" title="Location map" loading="lazy"></iframe>
+          </div>
+        </section>
+      </div>
+
+      <div class="footer-note">
+        This page is driven entirely by URL query parameters. Missing values fall back to placeholders.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const defaults = {
+      orgName: "Home & Garden Information Center",
+      studentName: "Ava Johnson",
+      studentId: "S-100245",
+      program: "Gardening Program",
+      enrollmentStatus: "Active",
+      outstandingBalance: "$1,250.00",
+      financialAidStatus: "Available",
+      primaryPhone: "(864) 555-0142",
+      firstName: "Ava",
+      lastName: "Johnson",
+      street: "123 Greenway Dr.",
+      city: "Clemson",
+      zip: "29631",
+      email: "ava.johnson@example.edu",
+      preCallJourney: "/home > /garden > /services > /contact-center",
+      currentPage: "/student-dashboard",
+      recentAction: "Viewed payment options",
+      journeyStatus: "In Progress",
+      lastPaymentDate: "2026-04-18",
+      callRecordId: "CR-100245-01",
+      agentId: "147",
+      queueName: "Home & Garden Support",
+      interactionType: "Screen Pop",
+      riskLevel: "Medium",
+      campusLat: "34.6767",
+      campusLng: "-82.8368"
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const getParam = (key) => {
+      const value = params.get(key);
+      return (value === null || value.trim() === "") ? defaults[key] : value;
+    };
+
+    const data = Object.fromEntries(Object.keys(defaults).map(k => [k, getParam(k)]));
+
+    const setText = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    };
+
+    setText("orgName", data.orgName);
+    setText("studentName", data.studentName);
+    setText("studentId", data.studentId);
+    setText("program", data.program);
+    setText("outstandingBalance", data.outstandingBalance);
+    setText("financialAidStatus", data.financialAidStatus);
+    setText("primaryPhone", data.primaryPhone);
+    setText("firstName", data.firstName);
+    setText("lastName", data.lastName);
+    setText("street", data.street);
+    setText("city", data.city);
+    setText("zip", data.zip);
+    setText("email", data.email);
+    setText("preCallJourney", data.preCallJourney);
+    setText("currentPage", data.currentPage);
+    setText("recentAction", data.recentAction);
+    setText("lastPaymentDate", data.lastPaymentDate);
+    setText("callRecordId", data.callRecordId);
+    setText("agentId", data.agentId);
+    setText("queueName", data.queueName);
+    setText("interactionType", data.interactionType);
+
+    function badgeText(value, kind){
+      return `<span class="pill ${kind || ""}">${value}</span>`;
+    }
+
+    document.getElementById("enrollmentStatus").innerHTML = badgeText(data.enrollmentStatus, "");
+    document.getElementById("journeyStatus").innerHTML = badgeText(data.journeyStatus, "");
+    document.getElementById("riskLevel").innerHTML =
+      data.riskLevel.toLowerCase() === "high"
+        ? badgeText(data.riskLevel, "bad")
+        : data.riskLevel.toLowerCase() === "medium"
+          ? badgeText(data.riskLevel, "warn")
+          : badgeText(data.riskLevel, "");
+
+    const lat = Number(data.campusLat);
+    const lng = Number(data.campusLng);
+    const map = document.getElementById("campusMap");
+    if (Number.isFinite(lat) && Number.isFinite(lng)) {
+      const delta = 0.02;
+      const left = lng - delta;
+      const right = lng + delta;
+      const bottom = lat - delta;
+      const top = lat + delta;
+      map.src = `https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(left)},${encodeURIComponent(bottom)},${encodeURIComponent(right)},${encodeURIComponent(top)}&layer=mapnik&marker=${encodeURIComponent(lat)},${encodeURIComponent(lng)}`;
+    } else {
+      map.removeAttribute("src");
+      map.style.display = "none";
+    }
+
+    document.title = `${data.studentName} | Home & Garden Information Center`;
+  </script>
+</body>
+</html>
