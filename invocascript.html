@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home & Garden Information Center | Invoca Script</title>
+  <title>Emory Invoca PreSense Data</title>
   <style>
     :root{
-      --green:#0a8f5b;
-      --green-dark:#08724a;
+      --green:#00843D;
+      --green-dark:#06703a;
       --border:#d8e6de;
       --text:#1f2937;
       --muted:#6b7280;
@@ -15,7 +15,7 @@
       --card:#ffffff;
       --shadow:0 8px 24px rgba(16,24,40,.06);
       --label:#2f4d3f;
-      --pill:#0a8f5b;
+      --pill:#00843D;
       --warn:#b7791f;
       --bad:#b42318;
     }
@@ -101,10 +101,6 @@
       word-break:break-word;
     }
 
-    .value strong{
-      font-weight:700;
-    }
-
     .pill{
       display:inline-block;
       padding:4px 10px;
@@ -165,63 +161,63 @@
 </head>
 <body>
   <div class="wrap">
-    <div class="topbar" id="orgName">Home & Garden Information Center</div>
+    <div class="topbar" id="orgName">Emory Invoca PreSense Data</div>
 
     <div class="panel">
       <div class="content">
         <section class="section">
-          <h2 class="section-title">Customer Context</h2>
+          <h2 class="section-title">Patient Context</h2>
           <div class="rows">
-            <div class="row"><div class="label">Customer Name:</div><div class="value" id="customerName">Ava Johnson</div></div>
-            <div class="row"><div class="label">Customer Type:</div><div class="value" id="customerType">Homeowner</div></div>
-            <div class="row"><div class="label">Service Request:</div><div class="value" id="serviceRequest">Plant care and lawn advice</div></div>
-            <div class="row"><div class="label">Shopping Cart Value:</div><div class="value" id="shoppingCartValue">$0.00</div></div>
-            <div class="row"><div class="label">Products:</div><div class="value" id="products">Soil, mulch, fertilizer</div></div>
-            <div class="row"><div class="label">Other Party Number:</div><div class="value" id="otherPartyNumber">(864) 555-0142</div></div>
-            <div class="row"><div class="label">Serviceable Address:</div><div class="value" id="serviceableAddress">Yes</div></div>
-            <div class="row"><div class="label">Shopping Cart ID:</div><div class="value" id="shoppingCartId">HG-8302-HZ</div></div>
+            <div class="row"><div class="label">Patient Name:</div><div class="value" id="patientName">Ava Johnson</div></div>
+            <div class="row"><div class="label">New Patient:</div><div class="value" id="newPatient"><span class="pill">Yes</span></div></div>
+            <div class="row"><div class="label">Specialty:</div><div class="value" id="specialty">Gynecology</div></div>
+            <div class="row"><div class="label">Appointment Type:</div><div class="value" id="appointmentType">New patient consult</div></div>
+            <div class="row"><div class="label">Source:</div><div class="value" id="source">Google Search</div></div>
+            <div class="row"><div class="label">Search Term:</div><div class="value" id="searchTerm">gynecology near me</div></div>
+            <div class="row"><div class="label">Requested Location:</div><div class="value" id="requestedLocation">Atlanta / Emory</div></div>
+            <div class="row"><div class="label">Appointment Status:</div><div class="value" id="appointmentStatus"><span class="pill warn">Needs Scheduling</span></div></div>
           </div>
         </section>
 
         <section class="section">
           <h2 class="section-title">Contact Information</h2>
           <div class="rows">
-            <div class="row"><div class="label">Primary Phone:</div><div class="value" id="primaryPhone">8645550142</div></div>
+            <div class="row"><div class="label">Primary Phone:</div><div class="value" id="primaryPhone">4045550142</div></div>
             <div class="row"><div class="label">First Name:</div><div class="value" id="firstName">Ava</div></div>
             <div class="row"><div class="label">Last Name:</div><div class="value" id="lastName">Johnson</div></div>
-            <div class="row"><div class="label">Street:</div><div class="value" id="street">123 Greenway Dr.</div></div>
-            <div class="row"><div class="label">City:</div><div class="value" id="city">Clemson</div></div>
-            <div class="row"><div class="label">Zip:</div><div class="value" id="zip">29631</div></div>
-            <div class="row"><div class="label">Email:</div><div class="value" id="email">ava.johnson@example.edu</div></div>
+            <div class="row"><div class="label">Street:</div><div class="value" id="street">123 Peachtree St NE</div></div>
+            <div class="row"><div class="label">City:</div><div class="value" id="city">Atlanta</div></div>
+            <div class="row"><div class="label">Zip:</div><div class="value" id="zip">30308</div></div>
+            <div class="row"><div class="label">Email:</div><div class="value" id="email">ava.johnson@example.com</div></div>
           </div>
         </section>
 
         <section class="section">
           <h2 class="section-title">Digital Journey</h2>
           <div class="rows">
-            <div class="row"><div class="label">Pre-Call Journey:</div><div class="value" id="preCallJourney">/home &gt; /garden &gt; /support &gt; /contact-center</div></div>
-            <div class="row"><div class="label">Current Page:</div><div class="value" id="currentPage">/service-dashboard</div></div>
-            <div class="row"><div class="label">Recent Action:</div><div class="value" id="recentAction">Viewed plant care tips</div></div>
+            <div class="row"><div class="label">Pre-Call Journey:</div><div class="value" id="preCallJourney">/home &gt; /specialties &gt; /gynecology &gt; /appointments</div></div>
+            <div class="row"><div class="label">Landing Page:</div><div class="value" id="currentPage">/emory/gynecology/new-patient</div></div>
+            <div class="row"><div class="label">Recent Action:</div><div class="value" id="recentAction">Viewed provider profiles</div></div>
             <div class="row"><div class="label">Journey Status:</div><div class="value" id="journeyStatus"><span class="pill">In Progress</span></div></div>
-            <div class="row"><div class="label">Last Payment Date:</div><div class="value" id="lastPaymentDate">2026-04-18</div></div>
+            <div class="row"><div class="label">Preferred Timing:</div><div class="value" id="preferredTiming">Next available</div></div>
           </div>
         </section>
 
         <section class="section">
           <h2 class="section-title">System Data</h2>
           <div class="rows">
-            <div class="row"><div class="label">Call Record ID:</div><div class="value" id="callRecordId">HG-CR-100245-01</div></div>
+            <div class="row"><div class="label">Call Record ID:</div><div class="value" id="callRecordId">EM-CR-100245-01</div></div>
             <div class="row"><div class="label">Agent ID:</div><div class="value" id="agentId">147</div></div>
-            <div class="row"><div class="label">Queue:</div><div class="value" id="queueName">Home & Garden Support</div></div>
+            <div class="row"><div class="label">Queue:</div><div class="value" id="queueName">Emory New Patient Scheduling</div></div>
             <div class="row"><div class="label">Interaction Type:</div><div class="value" id="interactionType">Screen Pop</div></div>
             <div class="row"><div class="label">Risk / Priority:</div><div class="value" id="riskLevel"><span class="pill warn">Medium</span></div></div>
           </div>
         </section>
 
         <section class="section full">
-          <h2 class="section-title">Location</h2>
+          <h2 class="section-title">Atlanta / Emory Map</h2>
           <div class="map-box">
-            <iframe id="campusMap" title="Location map" loading="lazy"></iframe>
+            <iframe id="campusMap" title="Atlanta Emory map" loading="lazy"></iframe>
           </div>
         </section>
       </div>
@@ -234,34 +230,34 @@
 
   <script>
     const defaults = {
-      orgName: "Home & Garden Information Center",
-      customerName: "Ava Johnson",
-      customerType: "Homeowner",
-      serviceRequest: "Plant care and lawn advice",
-      shoppingCartValue: "$0.00",
-      products: "Soil, mulch, fertilizer",
-      otherPartyNumber: "(864) 555-0142",
-      serviceableAddress: "Yes",
-      shoppingCartId: "HG-8302-HZ",
-      primaryPhone: "8645550142",
+      orgName: "Emory Invoca PreSense Data",
+      patientName: "Ava Johnson",
+      newPatient: "Yes",
+      specialty: "Gynecology",
+      appointmentType: "New patient consult",
+      source: "Google Search",
+      searchTerm: "gynecology near me",
+      requestedLocation: "Atlanta / Emory",
+      appointmentStatus: "Needs Scheduling",
+      primaryPhone: "4045550142",
       firstName: "Ava",
       lastName: "Johnson",
-      street: "123 Greenway Dr.",
-      city: "Clemson",
-      zip: "29631",
-      email: "ava.johnson@example.edu",
-      preCallJourney: "/home > /garden > /support > /contact-center",
-      currentPage: "/service-dashboard",
-      recentAction: "Viewed plant care tips",
+      street: "123 Peachtree St NE",
+      city: "Atlanta",
+      zip: "30308",
+      email: "ava.johnson@example.com",
+      preCallJourney: "/home > /specialties > /gynecology > /appointments",
+      currentPage: "/emory/gynecology/new-patient",
+      recentAction: "Viewed provider profiles",
       journeyStatus: "In Progress",
-      lastPaymentDate: "2026-04-18",
-      callRecordId: "HG-CR-100245-01",
+      preferredTiming: "Next available",
+      callRecordId: "EM-CR-100245-01",
       agentId: "147",
-      queueName: "Home & Garden Support",
+      queueName: "Emory New Patient Scheduling",
       interactionType: "Screen Pop",
       riskLevel: "Medium",
-      campusLat: "34.6767",
-      campusLng: "-82.8368"
+      campusLat: "33.7919",
+      campusLng: "-84.3185"
     };
 
     const params = new URLSearchParams(window.location.search);
@@ -278,14 +274,12 @@
     };
 
     setText("orgName", data.orgName);
-    setText("customerName", data.customerName);
-    setText("customerType", data.customerType);
-    setText("serviceRequest", data.serviceRequest);
-    setText("shoppingCartValue", data.shoppingCartValue);
-    setText("products", data.products);
-    setText("otherPartyNumber", data.otherPartyNumber);
-    setText("serviceableAddress", data.serviceableAddress);
-    setText("shoppingCartId", data.shoppingCartId);
+    setText("patientName", data.patientName);
+    setText("specialty", data.specialty);
+    setText("appointmentType", data.appointmentType);
+    setText("source", data.source);
+    setText("searchTerm", data.searchTerm);
+    setText("requestedLocation", data.requestedLocation);
     setText("primaryPhone", data.primaryPhone);
     setText("firstName", data.firstName);
     setText("lastName", data.lastName);
@@ -296,12 +290,23 @@
     setText("preCallJourney", data.preCallJourney);
     setText("currentPage", data.currentPage);
     setText("recentAction", data.recentAction);
-    setText("lastPaymentDate", data.lastPaymentDate);
+    setText("preferredTiming", data.preferredTiming);
     setText("callRecordId", data.callRecordId);
     setText("agentId", data.agentId);
     setText("queueName", data.queueName);
     setText("interactionType", data.interactionType);
 
+    document.getElementById("newPatient").innerHTML = `<span class="pill">${data.newPatient}</span>`;
+
+    const appt = String(data.appointmentStatus).toLowerCase();
+    document.getElementById("appointmentStatus").innerHTML =
+      appt.includes("sched") || appt.includes("booked")
+        ? `<span class="pill">${data.appointmentStatus}</span>`
+        : appt.includes("urgent") || appt.includes("high")
+          ? `<span class="pill bad">${data.appointmentStatus}</span>`
+          : `<span class="pill warn">${data.appointmentStatus}</span>`;
+
+    const journey = String(data.journeyStatus).toLowerCase();
     document.getElementById("journeyStatus").innerHTML =
       `<span class="pill">${data.journeyStatus}</span>`;
 
@@ -329,7 +334,7 @@
       map.style.display = "none";
     }
 
-    document.title = `${data.customerName} | Home & Garden Information Center`;
+    document.title = `${data.patientName} | Emory Invoca PreSense Data`;
   </script>
 </body>
 </html>
