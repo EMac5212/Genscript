@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>UCF Online | Career Discovery Dashboard</title>
   <style>
     :root{
       --black:#000000;
       --gold:#FFC904;
-      --gold-2:#e6b800;
       --bg:#f6f7fb;
       --card:#ffffff;
       --text:#111827;
@@ -140,7 +140,7 @@
     .hero-body{
       padding:18px;
       display:grid;
-      grid-template-columns:1.1fr .9fr;
+      grid-template-columns:1.15fr .85fr;
       gap:14px;
       align-items:stretch;
       background:
@@ -198,11 +198,7 @@
       font-size:.82rem;
     }
 
-    .fields{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:12px;
-    }
+    .stack{ display:grid; gap:12px; }
 
     .field,
     .metric,
@@ -228,8 +224,6 @@
       overflow-wrap:anywhere;
       white-space:pre-wrap;
     }
-
-    .stack{ display:grid; gap:12px; }
 
     .progress{
       height:12px;
@@ -287,6 +281,7 @@
     .question strong{
       display:block;
       margin-bottom:4px;
+      font-size:.98rem;
     }
 
     .question span{
@@ -364,7 +359,6 @@
     @media (max-width: 760px){
       .hero-bar{ flex-direction:column; }
       .meta{ justify-content:flex-start; text-align:left; }
-      .fields{ grid-template-columns:1fr; }
       .question{ flex-direction:column; align-items:flex-start; }
     }
   </style>
@@ -382,16 +376,16 @@
           </div>
         </div>
         <div class="meta">
-          <div class="pill" id="studentNamePill">Student</div>
+          <div class="pill" id="studentNamePill">Eric McDougal</div>
           <div class="badge warn" id="confidenceBadge">Exploring</div>
         </div>
       </div>
 
       <div class="hero-body">
         <div class="hero-panel">
-          <h2>Student Overview</h2>
-          <p class="big" id="headlineName">Student Name</p>
-          <p class="muted" id="headlineDetail">Undecided path · Career exploration</p>
+          <h2>Career Discovery Session</h2>
+          <p class="big" id="headlineName">Eric McDougal</p>
+          <p class="muted" id="headlineDetail">Undecided / General Studies · Spring 2029</p>
         </div>
 
         <div class="hero-panel">
@@ -405,26 +399,9 @@
     </section>
 
     <main class="grid">
-      <section class="card span-6">
-        <h2 class="section-title">Student Profile <small>Basic context</small></h2>
-        <div class="fields" id="profileFields"></div>
-      </section>
-
-      <section class="card span-6">
-        <h2 class="section-title">Career Path Questions <small>Conversation starters</small></h2>
-        <ul class="question-list" id="questionList"></ul>
-      </section>
-
       <section class="card span-8">
-        <h2 class="section-title">Discovery Areas <small>What to listen for</small></h2>
-        <div class="stack">
-          <div class="mini-grid" id="discoveryGrid"></div>
-
-          <div class="panel note">
-            <span class="label">Coach Summary</span>
-            <div class="value" id="coachSummary">Use the questions above to identify likely career clusters, then schedule a deeper coaching conversation.</div>
-          </div>
-        </div>
+        <h2 class="section-title">Career Discovery Questions <small>Primary coaching conversation guide</small></h2>
+        <ul class="question-list" id="questionList"></ul>
       </section>
 
       <section class="card span-4">
@@ -445,15 +422,30 @@
       </section>
 
       <section class="card span-12">
+        <h2 class="section-title">Discovery Areas <small>What to listen for</small></h2>
+        <div class="mini-grid" id="discoveryGrid"></div>
+      </section>
+
+      <section class="card span-12">
         <h2 class="section-title">Career Readiness Snapshot <small>Helpful coaching signals</small></h2>
         <div class="mini-grid" id="snapshotGrid"></div>
+      </section>
+
+      <section class="card span-12">
+        <h2 class="section-title">Coach Summary <small>Suggested talking points</small></h2>
+        <div class="panel note">
+          <span class="label">Summary</span>
+          <div class="value" id="coachSummary">
+            Use the questions above to identify likely career clusters, then schedule a deeper coaching conversation.
+          </div>
+        </div>
       </section>
     </main>
   </div>
 
   <script>
     const defaults = {
-      studentName: "Student Name",
+      studentName: "Eric McDougal",
       studentId: "UCF-000000",
       major: "Undecided / General Studies",
       graduationDate: "Spring 2029",
@@ -466,8 +458,8 @@
       environmentPreference: "Unknown",
       peoplePreference: "Unknown",
       pacePreference: "Unknown",
-      note: "Use the questions above to identify likely career clusters, then schedule a deeper coaching conversation.",
-      nextStep: "Schedule deeper coaching and career planning",
+      nextStep: "Schedule a deeper dive on coaching and career planning to review interests, strengths, and next steps.",
+      coachSummary: "Use the questions above to identify likely career clusters, then schedule a deeper coaching conversation.",
       resumeStatus: "Not Reviewed",
       linkedinStatus: "Not Started",
       interviewStatus: "Not Started",
@@ -495,47 +487,39 @@
     document.getElementById("headlineDetail").textContent = `${data.major} · ${data.graduationDate}`;
     document.getElementById("explorationScoreText").textContent = `${score}%`;
     document.getElementById("explorationBar").style.width = `${score}%`;
-    document.getElementById("coachSummary").textContent = data.note;
     document.getElementById("recommendation").textContent = data.nextStep;
+    document.getElementById("coachSummary").textContent = data.coachSummary;
 
     const confidenceBadge = document.getElementById("confidenceBadge");
     confidenceBadge.classList.remove("good", "warn", "bad");
     if (score >= 75) {
       confidenceBadge.textContent = "Clear Direction";
       confidenceBadge.classList.add("good");
+      document.getElementById("explorationBar").classList.remove("warn");
+      document.getElementById("explorationBar").classList.add("good");
     } else if (score >= 50) {
       confidenceBadge.textContent = "Narrowing Options";
       confidenceBadge.classList.add("warn");
+      document.getElementById("explorationBar").classList.remove("good");
+      document.getElementById("explorationBar").classList.add("warn");
     } else {
       confidenceBadge.textContent = "Exploring";
       confidenceBadge.classList.add("bad");
+      document.getElementById("explorationBar").classList.remove("good");
+      document.getElementById("explorationBar").classList.add("warn");
     }
 
-    const profileFields = [
-      ["Student ID", data.studentId],
-      ["Major", data.major],
-      ["Graduation Date", data.graduationDate],
-      ["Student Type", data.studentType],
-      ["Advisor", data.advisor],
-      ["Exploration Status", data.confidenceStatus]
-    ];
-
-    document.getElementById("profileFields").innerHTML = profileFields.map(([label, value]) => `
-      <div class="field">
-        <span class="label">${label}</span>
-        <div class="value">${value || "—"}</div>
-      </div>
-    `).join("");
-
     const questions = [
-      ["Desk or hands-on?", "Do you prefer a desk-based role, a hands-on role, or a mix of both?"],
-      ["Leader or specialist?", "Would you rather eventually lead teams or become a deep subject-matter expert?"],
-      ["People or processes?", "Do you enjoy working with people, systems, data, or a combination?"],
-      ["Structured or flexible?", "Do you prefer predictable routines or varied day-to-day work?"],
-      ["Fast-paced or steady?", "Do you like quick decision-making or a more steady work environment?"],
-      ["Independent or collaborative?", "Do you like working alone, in a team, or both?"],
-      ["Analytical or creative?", "Are you more drawn to problem-solving and analysis or design and ideas?"],
-      ["Public-facing or behind the scenes?", "Do you want to interact with the public or support work internally?"]
+      ["Work Environment", "Do you prefer working at a desk, remotely, in the field, or a combination?"],
+      ["Leadership Interest", "Do you see yourself leading teams one day or becoming a specialist in a specific area?"],
+      ["People vs Technology", "Would you rather spend most of your day working with people, technology, data, or a mix?"],
+      ["Decision Making", "Do you enjoy making quick decisions or taking time to deeply analyze information?"],
+      ["Creativity", "Do you enjoy creating new ideas or improving existing processes?"],
+      ["Collaboration", "Do you prefer independent work or collaborating with teams?"],
+      ["Impact", "What type of impact would you like your future career to have on others?"],
+      ["Career Values", "What matters most to you: salary, flexibility, stability, growth, or helping others?"],
+      ["Learning Style", "Do you enjoy learning through hands-on experiences or classroom instruction?"],
+      ["Industry Interest", "Which industries naturally interest you today, even if you are unsure of a specific career?"]
     ];
 
     document.getElementById("questionList").innerHTML = questions.map(([title, prompt]) => `
@@ -548,12 +532,12 @@
     `).join("");
 
     const discoveryAreas = [
-      ["Work Style", data.workPreference],
-      ["Leadership Preference", data.leadershipPreference],
-      ["Environment", data.environmentPreference],
-      ["People Interaction", data.peoplePreference],
-      ["Pace", data.pacePreference],
-      ["Interest Style", data.interestStyle]
+      ["Potential Career Cluster", "To Be Determined"],
+      ["Leadership Orientation", data.leadershipPreference],
+      ["Work Environment", data.environmentPreference],
+      ["Career Confidence", data.confidenceStatus],
+      ["Strength Assessment", "Not Completed"],
+      ["Career Assessment", "Recommended"]
     ];
 
     document.getElementById("discoveryGrid").innerHTML = discoveryAreas.map(([label, value]) => `
@@ -568,7 +552,8 @@
       ["LinkedIn", data.linkedinStatus],
       ["Interviewing", data.interviewStatus],
       ["Internships", data.internshipStatus],
-      ["Skills", data.skillsStatus]
+      ["Skills", data.skillsStatus],
+      ["Advisor", data.advisor]
     ];
 
     document.getElementById("snapshotGrid").innerHTML = readiness.map(([label, value]) => `
